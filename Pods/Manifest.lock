@@ -1,0 +1,31 @@
+PODS:
+  - ADALiOS (1.2.6)
+  - OneDriveSDK (1.1.2):
+    - OneDriveSDK/Auth (= 1.1.2)
+    - OneDriveSDK/Common (= 1.1.2)
+    - OneDriveSDK/Extensions (= 1.1.2)
+    - OneDriveSDK/Implementations (= 1.1.2)
+    - OneDriveSDK/OneDriveCoreSDK (= 1.1.2)
+  - OneDriveSDK/Auth (1.1.2):
+    - ADALiOS (~> 1.2.4)
+    - OneDriveSDK/Common
+  - OneDriveSDK/Common (1.1.2)
+  - OneDriveSDK/Extensions (1.1.2):
+    - OneDriveSDK/Auth
+    - OneDriveSDK/Implementations
+    - OneDriveSDK/OneDriveCoreSDK
+  - OneDriveSDK/Implementations (1.1.2):
+    - OneDriveSDK/Common
+  - OneDriveSDK/OneDriveCoreSDK (1.1.2):
+    - OneDriveSDK/Common
+
+DEPENDENCIES:
+  - OneDriveSDK
+
+SPEC CHECKSUMS:
+  ADALiOS: ddfa6d7acf8e7d58e0d813ec5eec857c59f72fcc
+  OneDriveSDK: 2ba8787756deef12e787ee5dae6cb60e9dc7a6a9
+
+PODFILE CHECKSUM: 0faf080e9be77d0e9041380e1bf92130b1ff9a4a
+
+COCOAPODS: 1.0.0

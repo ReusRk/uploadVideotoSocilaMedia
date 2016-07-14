@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>ADALiOS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>OneDriveSDK.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-iStingSlider.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-iStingSliderTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-iStingSliderUITests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>07333CC97EFE784BF63900587A842EEC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3AF96C7CBA73483DA6DCCF5F8A5C8CA5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>485087AE3EEB206F1B80F7BF4B57E00B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>50B0D5C1189948446E95BEA2CB635822</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>66D1A863927CF503337FE73E4699F18B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

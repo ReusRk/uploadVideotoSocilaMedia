@@ -8,17 +8,103 @@
 
 #import "AppDelegate.h"
 
-@interface AppDelegate ()
+
+@interface AppDelegate ()<DBSessionDelegate, DBNetworkRequestDelegate>
 
 @end
 
 @implementation AppDelegate
-
+@synthesize hideScreen;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    hideScreen = [[NSUserDefaults standardUserDefaults] boolForKey:@"hideScreen"];
+
+    
+# pragma OneDriveSetup
+    
+    [ODClient setMicrosoftAccountAppId:@"000000004C114A26" scopes:@[@"onedrive.appfolder"] ];
+    
+#pragma DropBoxSetup
+    
+    DBSession *dbSession = [[DBSession alloc]
+                            initWithAppKey:db_APP_KEY
+                            appSecret:db_APP_SECRET
+                            root:kDBRootAppFolder]; // either kDBRootAppFolder or kDBRootDropbox
+    dbSession.delegate = self;
+    [DBSession setSharedSession:dbSession];
+    [DBRequest setNetworkRequestDelegate:self];
+    
+    
+    [[FBSDKApplicationDelegate sharedInstance] application:application
+                             didFinishLaunchingWithOptions:launchOptions];
+    
+    if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+    }
+    
+
+    
     return YES;
 }
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    if ([[DBSession sharedSession] handleOpenURL:url]) {
+        if ([[DBSession sharedSession] isLinked]) {
+            NSLog(@"App linked successfully!");
+            // At this point you can start making API calls
+        }
+        return YES;
+    }
+    if ([[url scheme] isEqualToString:FACEBOOK_SCHEME])
+        
+    {
+        return [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                              openURL:url
+                                                    sourceApplication:sourceApplication
+                                                           annotation:annotation];
+    }
+    
+    return NO;
+}
+
+
+#pragma mark - DBSessionDelegate methods
+- (void)sessionDidReceiveAuthorizationFailure:(DBSession*)session userId:(NSString *)userId
+{
+    relinkUserId = userId;
+    [[[UIAlertView alloc] initWithTitle:@"Dropbox Session Ended" message:@"Do you want to relink?" delegate:self
+                      cancelButtonTitle:@"Cancel" otherButtonTitles:@"Relink", nil] show];
+}
+#pragma mark UIAlertViewDelegate methods
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)index
+{
+    if (index != alertView.cancelButtonIndex) {
+        [[DBSession sharedSession] linkFromController:_window.rootViewController];
+    }
+    relinkUserId = nil;
+}
+#pragma mark DBNetworkRequestDelegate methods
+static int outstandingRequests;
+- (void)networkRequestStarted
+{
+    outstandingRequests++;
+    if (outstandingRequests == 1) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    }
+}
+- (void)networkRequestStopped
+{
+    outstandingRequests--;
+    if (outstandingRequests == 0) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    }
+}
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -35,7 +121,9 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    application.applicationIconBadgeNumber = 0;
+    [FBSDKAppEvents activateApp];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
