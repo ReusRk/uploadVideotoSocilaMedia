@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "7E5DE6F0A539A0B98DD2191D50B4B3095C946837",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "7E5DE6F0A539A0B98DD2191D50B4B3095C946837" : 0,
+    "A85133527DCBF0A3515BA28AB90F6B8102F02AE3" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "512DFE86-93E6-47EA-923D-3DEFB3DA87A2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "7E5DE6F0A539A0B98DD2191D50B4B3095C946837" : "SliderNvaigation\/",
+    "A85133527DCBF0A3515BA28AB90F6B8102F02AE3" : "..\/..\/..\/..\/Downloads\/ios-quickeditor"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "iStingSlider",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "iStingSlider.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ReusNk\/SliderNvaigation.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "7E5DE6F0A539A0B98DD2191D50B4B3095C946837"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/googledrive\/ios-quickeditor.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A85133527DCBF0A3515BA28AB90F6B8102F02AE3"
+    }
+  ]
+}
